@@ -9,7 +9,7 @@ RingCentral Glip with botbuilder demos
 * Node.js > 8
 * [Ngrok](https://ngrok.com/) to create a secure tunnel to local host
 * [RingCentral developer free account](https://developer.ringcentral.com) to create a new app with platform type -"Server/bot"
-* Microsoft LUIS account (optional)
+
 
 ## How to demo
 
@@ -47,10 +47,5 @@ $ node index.js
 
 Add bot to your glip with `Add to Glip` button in your bot page.
 
-### Play with LUIS
 
-You need to create a app in LUIS with some intents. And publish your LUIS, and set LUIS model url in `.env` file
-
-```
-$ node bot_with_luis.js
 ```
