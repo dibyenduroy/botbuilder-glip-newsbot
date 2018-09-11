@@ -55,7 +55,11 @@ server.get('/oauth', connector.listenOAuth())
 //For private glip bot
 server.post('/oauth', connector.listenOAuth())
 
-server.post('/webhook', connector.listen())
+setTimeout(function () {
+            server.post('/webhook', connector.listen())
+            console.log('timeout completed'); 
+}, 4000); 
+
 
 const bot = new builder.UniversalBot(connector)
 
