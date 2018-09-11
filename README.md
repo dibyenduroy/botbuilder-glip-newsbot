@@ -16,7 +16,7 @@ RingCentral Glip with botbuilder demos
 ### Clone this repo
 
 ```
-$ git clone https://github.com/embbnux/botbuilder-glip-demos.git
+$ git clone https://github.com/dibyenduroy/botbuilder-glip-newsbot
 $ cd botbuilder-glip-demos
 $ yarn install
 ```
