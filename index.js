@@ -23,8 +23,10 @@ const { GlipConnector } = require('botbuilder-glip')
 dotenv.config()
 let botsData = {}
 const botsDataFile = path.join(__dirname, '.cache')
+console.log("The Bot data file is :" + botsDataFile)
 if (fs.existsSync(botsDataFile)) {
   botsData = JSON.parse(fs.readFileSync(botsDataFile, 'utf-8'))
+  console.log('Reading the .Cache file')
 }
 
 const server = restify.createServer()
