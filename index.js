@@ -77,7 +77,9 @@ bot.on('installationUpdate', (event) => {
     identity: event.address.bot,
     token: event.sourceEvent.TokenData
   }
-  fs.writeFileSync(botsDataFile, JSON.stringify(botsData)) // save token
+  fs.writeFileSync(botsDataFile, JSON.stringify(botsData)) 
+  // save token
+  console.log("Saved the bot token to the file")
 })
 
   
