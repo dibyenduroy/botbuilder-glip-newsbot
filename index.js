@@ -27,6 +27,8 @@ console.log("The Bot data file is :" + botsDataFile)
 if (fs.existsSync(botsDataFile)) {
   botsData = JSON.parse(fs.readFileSync(botsDataFile, 'utf-8'))
   console.log('Reading the .Cache file')
+} else {
+    console.log('The .Cache File does not exists')
 }
 
 const server = restify.createServer()
