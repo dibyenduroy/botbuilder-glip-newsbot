@@ -6,6 +6,7 @@ const path = require('path')
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('92eebfb88d814cf99943ec3da40a721f');
 
+
 var newsSource;
 var newsList = "";
 
@@ -19,6 +20,9 @@ var latest_news = new Array();
 latest_news = [news_fields];
 
 const { GlipConnector } = require('botbuilder-glip')
+const { MongoStorage } = require('./mongoStorage');
+
+const storage = new MongoStorage({ url: process.env.MONGODB_URI, db: process.env.MONGODB_DB });
 
 dotenv.config()
 let botsData = {}
@@ -40,7 +44,7 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
   console.log('%s listening to %s', server.name, server.url)
 })
 
-const connector = new GlipConnector({
+/*const connector = new GlipConnector({
   botLookup: (botId) => {
     const botEntry = botsData[botId]
     return botEntry
@@ -51,7 +55,20 @@ const connector = new GlipConnector({
   server: process.env.GLIP_API_SERVER,
   redirectUrl: `${process.env.GLIP_BOT_SERVER}/oauth`,
   webhookUrl: `${process.env.GLIP_BOT_SERVER}/webhook`
-})
+})*/
+
+const connector = new GlipConnector({
+  botLookup: async (botId) => {
+    const botEntry = await storage.find('bots', botId)
+    return botEntry;
+  },
+  verificationToken: process.env.GLIP_BOT_VERIFICATION_TOKEN,
+  clientId: process.env.GLIP_CLIENT_ID,
+  clientSecret: process.env.GLIP_CLIENT_SECRET,
+  server: process.env.GLIP_API_SERVER,
+  redirectUrl: `${process.env.GLIP_BOT_SERVER}/oauth`,
+  webhookUrl: `${process.env.GLIP_BOT_SERVER}/webhook`
+});
 
 // For public glip bot
 server.get('/oauth', connector.listenOAuth())
@@ -70,7 +87,7 @@ console.log('After Calling Webhook Subscription');
 
 const bot = new builder.UniversalBot(connector)
 
-bot.on('installationUpdate', (event) => {
+/*bot.on('installationUpdate', (event) => {
   console.log(`New bot installed: ${event.sourceEvent.TokenData.owner_id}`)
 
   botsData[event.sourceEvent.TokenData.owner_id] = {
@@ -81,7 +98,18 @@ bot.on('installationUpdate', (event) => {
   // save token
   console.log("The Bots Data is " + botsData)
   console.log("Saved the bot token to the file")
-})
+})*/
+
+bot.on('installationUpdate', (event) => {
+  const botId = event.sourceEvent.TokenData.owner_id;
+  console.log(`New bot installed: ${botId}`);
+
+  const botData = {
+    identity: event.address.bot,
+    token: event.sourceEvent.TokenData
+  };
+  storage.insert('bots', botId, botData);
+});
 
   
 
