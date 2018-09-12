@@ -25,7 +25,7 @@ const { MongoStorage } = require('./mongoStorage');
 const storage = new MongoStorage({ url: process.env.MONGODB_URI, db: process.env.MONGODB_DB });
 
 dotenv.config()
-let botsData = {}
+/*let botsData = {}
 const botsDataFile = path.join(__dirname, '.cache')
 console.log("The Bot data file is :" + botsDataFile)
 if (fs.existsSync(botsDataFile)) {
@@ -33,16 +33,14 @@ if (fs.existsSync(botsDataFile)) {
   console.log('Reading the .Cache file')
 } else {
     console.log('The .Cache File does not exists')
-}
+}*/
 
 const server = restify.createServer()
 
 server.use(restify.plugins.queryParser())
 server.use(restify.plugins.bodyParser())
 
-server.listen(process.env.port || process.env.PORT || 3978, function () {
-  console.log('%s listening to %s', server.name, server.url)
-})
+
 
 /*const connector = new GlipConnector({
   botLookup: (botId) => {
@@ -82,6 +80,10 @@ setTimeout(function () {
             server.post('/webhook', connector.listen())
             console.log('timeout completed'); 
 }, 5000); 
+
+server.listen(process.env.port || process.env.PORT || 3978, function () {
+  console.log('%s listening to %s', server.name, server.url)
+})
 
 console.log('After Calling Webhook Subscription'); 
 
