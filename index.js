@@ -113,7 +113,7 @@ bot.on('installationUpdate', (event) => {
   storage.insert('bots', botId, botData);
 });
 
-  
+
 
 bot.dialog('/', function (session) {
   /////////////////////
@@ -229,3 +229,8 @@ msg.toLocaleLowerCase()==='info-money'.toLocaleLowerCase()||msg.toLocaleLowerCas
   
   //session.send("You said: %s", session.message.text)
 });
+
+setInterval(function() {
+    https.get("https://botbuilder-glip-newsbot.herokuapp.com/");
+    console.log("Heartbeat check for News Bot");
+}, 300000); // every 5 minutes (300000)
