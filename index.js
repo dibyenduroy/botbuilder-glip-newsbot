@@ -1,3 +1,4 @@
+var https = require("https");
 const builder = require('botbuilder')
 const restify = require('restify')
 const dotenv = require('dotenv')
