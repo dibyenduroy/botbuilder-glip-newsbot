@@ -67,7 +67,7 @@ const connector = new GlipConnector({
   server: process.env.GLIP_API_SERVER,
   redirectUrl: `${process.env.GLIP_BOT_SERVER}/oauth`,
   webhookUrl: `${process.env.GLIP_BOT_SERVER}/webhook`,
-  disableSubscribe: false
+  disableSubscribe: true
 });
 
 // For public glip bot
