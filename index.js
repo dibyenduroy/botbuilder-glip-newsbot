@@ -77,12 +77,12 @@ server.post('/oauth', connector.listenOAuth())
 
 console.log('Authentication Completed Sucessfully'); 
 
-/*setTimeout(function () {
+setTimeout(function () {
             server.post('/webhook', connector.listen())
             console.log('timeout completed'); 
-}, 2000); */
+}, 2000); 
 
-server.post('/webhook', connector.listen())
+//server.post('/webhook', connector.listen())
 
 server.listen(process.env.port || process.env.PORT || 3978, function () {
   console.log('%s listening to %s', server.name, server.url)
