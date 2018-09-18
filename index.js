@@ -209,7 +209,7 @@ bot.dialog('/', function (session) {
         fields: [
           {
             "title": "News bot commands",
-            "value": " For news from various sources type the source-type \n examples:\n abc-news\,\n financial-times,\n fortune,\n hacker-news,\n info-money,\n msnbc,\n techcrunch",
+            "value": "The news sources supported now are from source-types :\n abc-news\,\n financial-times,\n fortune,\n hacker-news,\n info-money,\n msnbc,\n techcrunch",
             "style": "Long"
           }],
           footnote: {
