@@ -5,8 +5,8 @@ const dotenv = require('dotenv')
 const fs = require('fs')
 const path = require('path')
 const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI('92eebfb88d814cf99943ec3da40a721f');
-
+//const newsapi = new NewsAPI('92eebfb88d814cf99943ec3da40a721f');
+const newsapi = new NewsAPI(process.env.NEWS_APIKEY);
 
 var newsSource;
 var newsList = "";
