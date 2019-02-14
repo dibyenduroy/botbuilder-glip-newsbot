@@ -165,8 +165,7 @@ bot.dialog('/', function (session) {
                   text: newsList,
                   title: "Top Headlines",
                     footnote: {
-                      "text": "News brought to you by News API",
-                      "iconUri": ""
+                      "text": "News brought to you by News API"
                     }
                 }]
               })
@@ -212,8 +211,7 @@ bot.dialog('/', function (session) {
             "style": "Long"
           }],
           footnote: {
-            "text": "News brought to you by News API",
-            "iconUri": ""
+            "text": "News brought to you by News API"
           }
       }]
     })
