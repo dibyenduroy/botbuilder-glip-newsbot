@@ -166,8 +166,7 @@ bot.dialog('/', function (session) {
                   title: "Top Headlines",
                     footnote: {
                       "text": "News brought to you by News API",
-                      "iconUri": "",
-                      "time": ""
+                      "iconUri": ""
                     }
                 }]
               })
@@ -214,8 +213,7 @@ bot.dialog('/', function (session) {
           }],
           footnote: {
             "text": "News brought to you by News API",
-            "iconUri": "",
-            "time": ""
+            "iconUri": ""
           }
       }]
     })
