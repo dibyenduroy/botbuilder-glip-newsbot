@@ -203,7 +203,7 @@ bot.dialog('/', function (session) {
         type: 'Card',
         fallback: 'Text',
         color: "#00ff2a",
-        text: 'list',
+        text: ' ',
         fields: [
           {
             "title": "News bot commands",
